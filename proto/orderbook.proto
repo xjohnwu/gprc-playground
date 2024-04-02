@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package orderbook;
+
+// The OrderBook message
+message OrderBook {
+    repeated Order orders = 1;
+}
+
+// An Order message
+message Order {
+    string id = 1;
+    double price = 2;
+    double quantity = 3;
+    string side = 4; // "buy" or "sell"
+}
+
+// The OrderBookService service definition
+service OrderBookService {
+    rpc GetOrderBook (Empty) returns (OrderBook);
+}
+
+// An empty message
+message Empty {}
